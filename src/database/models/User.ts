@@ -35,9 +35,9 @@ User.init({
   timestamps: false
 });
 
-User.belongsTo(Account, { foreignKey: 'accountId', onDelete: 'CASCADE', });
+User.belongsTo(Account, { foreignKey: 'accountId', as: "users", onDelete: 'CASCADE', });
 
-Account.belongsTo(User, { foreignKey: 'accountId', onDelete: 'CASCADE', });
+Account.hasOne(User, { foreignKey: 'accountId', as: "accounts", onDelete: 'CASCADE', });
 
 
 export default User;

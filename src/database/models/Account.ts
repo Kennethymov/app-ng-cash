@@ -22,13 +22,13 @@ Account.init({
 }, {
   underscored: true,
   sequelize: db,
-  modelName: 'users',
+  modelName: 'accounts',
   timestamps: false
 });
 
-Account.belongsTo(User, { foreignKey: 'accountId', onDelete: 'CASCADE', });
+Account.hasOne(User, { foreignKey: 'accountId', as: "accounts", onDelete: 'CASCADE', });
 
-User.belongsTo(Account, { foreignKey: 'accountId', onDelete: 'CASCADE', });
+User.belongsTo(Account, { foreignKey: 'accountId', as: "users", onDelete: 'CASCADE', });
 
 
 export default Account;
